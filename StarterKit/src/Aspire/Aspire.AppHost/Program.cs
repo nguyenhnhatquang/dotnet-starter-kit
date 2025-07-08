@@ -11,4 +11,8 @@ builder.AddProject<Projects.Web_Api>("web-api")
     .WithReference(database)
     .WaitFor(database);
 
+builder.AddNpmApp("demo-vite", "../../Apps/demo-vite", "dev")
+    .WithHttpEndpoint(port: 5173, env: "PORT")
+    .WithExternalHttpEndpoints();
+
 builder.Build().Run();
